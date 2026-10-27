@@ -49,13 +49,12 @@ Jag skapade en testfil med texten "Version 1", sen ändrade jag texten till "Ver
 jag körde sedan cat test.txt och fick ut texten "Version 2", git restore test.txt, cat test.txt och fick ut
 "Version 1" igen.
 
-Praktiskt exempel med git restore:
+Praktiskt exempel med git revert:
 
-Jag skapade en separat branch som heter revert-demo för att testa git revert utan att påverka main.
+Jag skapade en branch som heter revert-demo för att testa git revert utan att påverka main. Först skapade jag 
+filen revert-test.txt och gjorde en commit. Därefter körde jag git revert HEAD för att ångra den senaste commiten.
 
-Först skapade jag filen revert-test.txt och gjorde en commit. Därefter körde jag git revert HEAD för att ångra den senaste commiten.
-
-När jag körde git log --oneline -4 fick jag följande resultat:
+När jag körde git log --oneline -4 fick jag resultatet:
 
 79ee2b7 (HEAD -> revert-demo) CRevert "Added test file for revert"
 5543c9c Added test file for revert
