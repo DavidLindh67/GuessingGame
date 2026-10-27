@@ -48,3 +48,22 @@ Praktiskt exempel med git restore:
 Jag skapade en testfil med texten "Version 1", sen ändrade jag texten till "Version 2"
 jag körde sedan cat test.txt och fick ut texten "Version 2", git restore test.txt, cat test.txt och fick ut
 "Version 1" igen.
+
+Praktiskt exempel med git restore:
+
+Jag skapade en separat branch som heter revert-demo för att testa git revert utan att påverka main.
+
+Först skapade jag filen revert-test.txt och gjorde en commit. Därefter körde jag git revert HEAD för att ångra den senaste commiten.
+
+När jag körde git log --oneline -4 fick jag följande resultat:
+
+79ee2b7 (HEAD -> revert-demo) CRevert "Added test file for revert"
+5543c9c Added test file for revert
+d3a21eb (origin/main, main) Changed guessing range
+f1ac912 Added Git questions and answers
+
+När jag kontrollerade filen med ls revert-test.txt fick jag:
+
+ls: cannot access 'revert-test.txt': No such file or directory
+
+Det visar att git revertt ångrade ändringen genom att skapa en ny commit utan att radera den första commiten i historiken.
