@@ -1,0 +1,50 @@
+Fråga 1: Vad är skillnaden mellan git pull och hit push?
+
+Svar: git push andvänds för att skiocka mina lokala commits till github. 
+Medans git pull används för att hämta ändring från repository till min lokala branch
+
+Fråga 2: När använder man git log och git status?
+
+Svar: Git status för att kolla vilka filer som är redo att commitas,
+vilka filer som ändrats och om det finns filer som inte sparats i en commit.
+
+Git log används för att se historiken över commits i ett respository. git log --oneline
+kan används för att se tidigare commits och meddelanden. 
+
+Fråga 3: Vad är en branch i Git och varför är den användbar?
+
+Svar: En branch är en separat utvecklingsgren i Git. Den används till exempel 
+-för att utveckla nya features i ditt program utan att direkt påverka koden i main.
+
+När ändringar är färdiga kan du exempelsvis slå ihop ändringarna med main genom git merge.
+
+Det är också användbart eftersom då kan flera utvecklare jobba på olika saker samtidigt.
+Exempel git switch -c feature som skapar en ny branch och byter till den.
+
+Fråga 4: Vilka olika sätt finns det att återställa en kod till ett tidigare tillstånd i Git?
+
+Svar: Det finns flera sätt att återställa kod i Git.
+
+git restore används om jag ändrar något utan att commita, 
+så kan jag återställa till en tidigare commit. 
+
+du kan exempels använda restor om du ändrat något men inte gjort commit än. Kommandot återställer filen till den
+senaste committade versionen. Ändringar försvånner i filen.
+
+git reset --soft HEAD~1 kan jag ändra för att ångra den senaste commiten men behåller ändringar i staging area
+så kan jag göra en ny commit.
+
+git reset --hard HEAD~1 återställer branchen och fillerna till den föregående commiten.
+Men här ska man vara försiktig då ändringar kan gå förlorade.
+
+git reset --mixed HEAD~1, som ångrar senaste commiten men behåller 
+filändringarna utanför staging area.
+
+git revert HEAD skapar en ny commit som ångrar ändringar från den senaste commiten. Om jag pushat felaktig
+commit till Github.
+
+Praktiskt exempel med git restore:
+
+Jag skapade en testfil med texten "Version 1", sen ändrade jag texten till "Version 2"
+jag körde sedan cat test.txt och fick ut texten "Version 2", git restore test.txt, cat test.txt och fick ut
+"Version 1" igen.
